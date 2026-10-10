@@ -1,0 +1,2 @@
+import{copyFile,mkdir}from'node:fs/promises';
+const name=process.argv[2];if(!['journey','assertions','report'].includes(name))throw new Error('Choose journey, assertions, or report.');await mkdir('.backups',{recursive:true});await copyFile(`learner/${name}.mjs`,`.backups/${name}-${Date.now()}.mjs`);await copyFile(`checkpoints/${name}.mjs`,`learner/${name}.mjs`);console.log(`Restored ${name}; previous work saved in .backups/. Restart the app.`);

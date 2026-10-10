@@ -1,0 +1,6 @@
+{
+  "name": "lds-browser-qa-agent", "version": "1.0.0", "private": true, "type": "module", "license": "Apache-2.0",
+  "engines": {"node": ">=22.13"},
+  "scripts": {"setup":"node scripts/setup.mjs","start":"node --env-file-if-exists=.env.local server.mjs","test":"node --test test/*.test.mjs","test:integration":"node scripts/integration.mjs","restore":"node scripts/restore.mjs","starter":"node scripts/starter.mjs","check:journey":"node --test test/journey.test.mjs","check:assertions":"node --test test/assertions.test.mjs","check:report":"node --test test/report.test.mjs"},
+  "dependencies": {"@modelcontextprotocol/sdk":"1.32.0","chrome-devtools-mcp":"1.10.1"}
+}

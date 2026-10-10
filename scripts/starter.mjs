@@ -1,0 +1,4 @@
+import {cp,mkdir,writeFile}from'node:fs/promises';import{resolve}from'node:path';
+const target=process.argv[2];if(!target)throw new Error('Usage: npm run starter -- /absolute/path/to/new-starter-folder');const destination=resolve(target);if(destination===process.cwd()||destination.startsWith(process.cwd()+'/'))throw new Error('Choose a new folder outside this reference project.');
+await mkdir(destination,{recursive:false});for(const name of ['ui','lib','learner','checkpoints','starter','scripts','test','docs','package.json','package-lock.json','server.mjs','.gitignore','.env.example','README.md','NOTICE','LICENSE'])await cp(name,`${destination}/${name}`,{recursive:true});
+for(const name of ['journey','assertions','report'])await cp(`starter/${name}.mjs`,`${destination}/learner/${name}.mjs`);console.log(`Starter created at ${destination}. No keys, saved runs, or node_modules were copied.`);
