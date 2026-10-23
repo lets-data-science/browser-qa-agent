@@ -1,10 +1,14 @@
 # AI Browser QA Engineer
 
-Built by **LDS Team** · An LDS project · version **1.0.0**
+Built by **LDS Team** · An LDS project · version **1.0.1**
 
 Build a local browser-verification desk with **Chrome DevTools MCP**, then add a tightly scoped Gemini planner. Watch real browser actions, inspect screenshots and network/console evidence, and prove that the same checks fail before a fix and pass after it.
 
 This LDS build-along ships with a deliberately broken and a corrected **practice app**. It does not connect to your personal Chrome profile or arbitrary websites. Scripted verification works without an API key. Optional Gemini suggests a plan from the known journeys; it does not discover arbitrary bugs or execute unrestricted commands.
+
+![AI Browser QA Engineer showing three failed checks with a Chrome screenshot as evidence](docs/media/preview.gif)
+
+**Build it step by step:** the free guide on [Let's Data Science](https://letsdatascience.com/projects/browser-qa-agent) walks through each piece, with checks you can run, hints and screen recordings.
 
 ## Run your downloaded project
 

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 const origin=process.env.TEST_ORIGIN||'http://127.0.0.1:3083';
-const config=await fetch(`${origin}/api/config`).then(r=>r.json());
+// The check drives the running app; say so plainly instead of printing a raw socket error.
+const config=await fetch(`${origin}/api/config`).then(r=>r.json()).catch(error=>{console.error(`Could not reach the app at ${origin} (${error.cause?.code||error.message}).\nStart it first: run npm start in another terminal, keep it open, then run npm run test:integration again.`);process.exit(1);});
 const denied=await fetch(`${origin}/api/runs`,{method:'POST',headers:{'content-type':'application/json',origin:'https://untrusted.example'},body:JSON.stringify({journeys:['signup'],variant:'broken'})});assert.equal(denied.status,403);
 for(const variant of ['broken','fixed']){
  const started=await fetch(`${origin}/api/runs`,{method:'POST',headers:{'content-type':'application/json',origin,'x-lds-token':config.token},body:JSON.stringify({journeys:['signup','search','menu'],variant})});const initial=await started.json();assert.equal(started.status,202,JSON.stringify(initial));
